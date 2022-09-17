@@ -7,7 +7,7 @@ const xss = require("xss-clean");
 const helmet = require("helmet");
 const compression = require("compression");
 const bodyParser = require("body-parser");
-// const routerNavigation = require("./routes");
+const routerNavigation = require("./modules/routes");
 
 const app = express();
 const port = process.env.PORT;
@@ -22,7 +22,7 @@ app.use(compression());
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
-// app.use("/pitjarus_backend/v1", routerNavigation);
+app.use("/pitjarus_backend/v1", routerNavigation);
 app.use("/pitjarus", express.static("src/uploads"));
 
 const server = require("http").createServer(app);
